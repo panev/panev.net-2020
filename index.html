@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Panev.net</title>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+	
+	/* VARIABLES */
+
+	:root {
+		 /*colours*/
+		--c-high: #52DBDB;
+		--c-diff: #DEA4F2;
+		--c-base: #333333;
+		--c-medi: #999999;
+		--c-lite: #E7E7E7;
+
+		/* sizes */
+		--l-base: 720px;
+		--l-cozy: 480px;
+		--l-part: 120px;
+
+		/* vertical nuggets */
+		--v-cozy: 8px;
+		--v-base: 16px;
+		--v-base-plus: 20px;
+		--v-spacious: 24px;
+		--v-headspace: 40px;
+		--v-chunky: 80px;
+		--v-fat: 160px;
+	}
+
+	/* RESETS */
+
+	html {
+		margin: 0;
+		padding: 0;
+	}
+	
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	a:hover {
+		cursor: pointer;
+	}
+
+	h4, h5 {
+		margin: 0;
+	}
+
+	/* COMMONS */
+
+	body {
+		margin: 0;
+		color: var(--c-base);
+		padding-top: var(--v-chunky);
+		display: grid;
+		font-family: 'PT Sans', sans-serif;
+	}
+
+	.inline-link {
+		font-weight: 700;
+		position: relative;
+	}
+
+	.inline-link::after {
+		content: '';
+		display: inline;
+		background: var(--c-high);
+		width: 100%;
+		height: 4px;
+		border-radius: 2px;
+		position: absolute;
+		left: 0;
+		bottom: -4px;
+	}
+
+	.inline-link:hover {
+		color: var(--c-high);
+	}
+
+	.inline-link:hover::after {
+		bottom: -6px;
+	}
+
+	h1, h3 {
+		font-family: 'Comfortaa', cursive;
+	}
+
+	h1 {
+		font-weight: 700;
+		font-size: var(--v-headspace);
+		margin: var(--v-spacious) 0;
+	}
+
+	h3 {
+		font-weight: 400;
+		font-size: var(--v-base);
+		color: var(--c-medi);
+	}
+
+	p {
+		font-weight: 400;
+		font-size: var(--v-base-plus);
+		margin: 0;
+		line-height: 1.6;
+	}
+
+	/* NAVIGATION */
+
+	nav {
+		height: var(--v-chunky);
+		width: 100%;
+		background: #fff;
+		position: fixed;
+		top: 0;
+		text-align: center;
+		/*later:*/
+		/*box-shadow: 0px 40px 40px rgba(255, 255, 255, 0.5);*/
+		border-bottom: 1px solid var(--c-lite);
+		z-index: 1000;
+	}
+
+	nav a {
+		font-size: var(--v-base-plus);
+		line-height: var(--v-chunky);
+		height: var(--v-chunky);
+		padding: 0 var(--v-headspace);
+		position: relative;
+		display: inline-block;
+	}
+
+	nav a::after {
+		content: '';
+		background: var(--c-lite);
+		width: 24px;
+		height: 12px;
+		display: block;
+		position: absolute;
+		border-top-left-radius: 24px;
+		border-top-right-radius: 24px;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	nav a.nav-link-active::after {
+		background: var(--c-high);
+	}
+
+	nav a:hover {
+		cursor: pointer;
+		background: #f7f7f7;
+	}
+
+	.nav-link-active {
+		font-weight: 700;
+	}
+
+	/* LAYOUT */
+
+	section {
+		width: var(--l-base);
+		display: grid;
+		grid-template-columns: var(--l-part) var(--l-cozy) var(--l-part);
+		justify-self: center;
+		grid-template-areas: ". cozy ." "full full full";
+		margin-bottom: var(--v-fat);
+	}
+
+	#hello {
+		margin-top: var(--v-chunky);
+	}
+
+
+	#work > p {
+		justify-self: center;
+	}
+
+	.visual {
+		align-self: center;	
+		background: lightgrey;
+		height: 120px;
+		width: 120px;
+		grid-column: cozy;
+		justify-self: center;
+		border-radius: 50%;
+	}
+
+	section h1 {
+		grid-column: cozy;
+		justify-self: center;
+	}
+
+	section h3 {
+		grid-column: cozy;
+		justify-self: center;
+	}
+
+	section p {
+		grid-column: cozy;
+	}
+
+	/* HELLO SECTION */
+
+	.hello-separator {
+		grid-column: full;
+		margin: var(--v-spacious) 0;
+	}
+
+	.more-about {
+		grid-column: cozy;
+		height: 0px;
+		overflow: hidden;
+		transition: 0.5s;
+	}
+
+	.more-about p {
+		margin-top: var(--v-spacious);
+	}
+
+	.hello-section-active .more-about {
+		height: 360px;
+	}
+
+	.hello-section-active svg path {
+		stroke: var(--c-high);
+	}
+
+	.hello-section-active .more-about p {
+		animation: appear 1.5s;
+	}
+
+	.ribbon-left {
+		grid-column: 1 / 2;
+		align-self: center;
+	}
+
+	.ribbon-right {
+		grid-column: 3 / 3;
+    	align-self: center;
+    	justify-self: end;
+	}
+
+
+	section .button-text {
+		grid-column: cozy;
+		justify-self: center;
+		font-size: var(--v-base-plus);
+		text-transform: uppercase;
+		font-weight: 700;
+		color: var(--c-high);
+	}
+
+	/* WORK SECTION */
+
+	#work p {
+		margin-bottom: var(--v-headspace);
+	}
+
+	.work-list {
+		grid-column: full;
+		list-style: none;
+		margin-top: 0;
+		padding: 0;
+	}
+
+	.work-list li {
+		background: #fff;
+		box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+		border-radius: var(--v-base);
+		height: var(--v-chunky);
+		position: relative;
+		margin-bottom: var(--v-base);
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: var(--v-chunky) auto var(--v-fat);
+  		grid-template-rows: 50% 50%;
+  		transition: 0.5s;
+  		overflow: hidden;
+	}
+
+	.work-list a {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		z-index: 500;
+	}
+
+	.work-list .thumbnail {
+		width: 48px;
+		height: 48px;
+		display: inline-block;
+		background: var(--c-high);
+		border-radius: 50%;
+		grid-column: 1 / 1;
+		grid-row: 1 / 3;
+		align-self: center;
+		justify-self: center;
+		transition: 0.5s;
+		position: relative;
+		z-index: 0;
+	}
+
+	.work-list.personal-projects .thumbnail {
+		background: var(--c-diff);
+	}
+
+	.work-list.personal-projects .button-text {
+		color: var(--c-diff);
+	}
+
+	.work-list h4 {
+		display: block;
+		font-size: var(--v-base-plus);
+		font-weight: 700;
+		vertical-align: top;
+		grid-column: 2 / 2;
+		grid-row: 1 / 1;
+		align-self: start;
+		margin-top: 16px;
+		transition: 0.3s;
+		position: relative;
+		z-index: 5;
+	}
+
+	.work-list h5 {
+		display: inline-block;
+		position: relative;
+		z-index: 5;
+		font-size: var(--v-base);
+		font-weight: 400;
+		color: var(--c-medi);
+		vertical-align: bottom;
+		grid-column: 2 / 2;
+		grid-row: 2 / 3;
+		align-self: end;
+		transition: 0.3s;
+		margin-bottom: 16px;
+	}
+
+	.work-list span {
+		grid-column: 3 / 3;
+		grid-row: 1 / 3;
+		align-self: center;
+		justify-self: center;
+		opacity: 0;
+		transition: 0.3s;
+	}
+
+
+	/* list item hover state */
+
+	.work-list li:hover {
+		transform: translateY(-4px);
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+		background: var(--c-high);
+	}
+
+	.work-list.personal-projects li:hover {
+		background: var(--c-diff);
+	}
+
+	.work-list li:hover .button-text {
+		color: #fff;
+	}
+
+	.work-list li:hover span {
+		opacity: 1;
+	}
+
+	.work-list li:hover .thumbnail {
+		transform: scale(10);
+	}
+
+	.work-list li:hover h4,
+	.work-list li:hover h5 {
+		color: #fff;
+	}
+
+
+
+
+	/* CONTACT SECTION */
+
+	#contact p {
+		margin-bottom: var(--v-chunky);
+	}
+
+	.socials {
+		grid-column: cozy;
+		text-align: center;
+		padding: 0;
+	}
+
+	.socials li {
+		width: 20%;
+		display: inline-block;
+		background: red;
+	}
+
+	footer {
+		text-align: center;
+		margin-top: 580px;
+	}
+
+	/* ANIMATIONS */
+
+	@keyframes appear {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+	
+</style>
+
+</head>
+<body>
+
+<nav>
+	<a id="hello-link" class="nav-link-active">Hello</a>
+	<a id="work-link">Work</a>
+	<a id="contact-link">Contact</a>
+</nav>
+
+<section id="hello">
+
+	<div class="visual rocket"></div>
+	<h1>Hi there</h1>
+	<p>I’m Todor – a product designer based in Sofia, Bulgaria. <br> I currently work at <a href="https://www.paysafe.com/" class="inline-link" target="_blank">Paysafe</a> on the <a href="https://www.skrill.com/" class="inline-link" target="_blank">Skrill</a> digital wallet.</p>
+
+	<div class="more-about">
+		<p>I’ve spent most of my career helping build digital products. When I started out doing design, most of us were required to code – which was awesome and is still something I enjoy doing.</p>
+		<p>Today, after having gone through a few differnt design roles, I spend most of my time trying to fuse together people’s needs with business’ wants.</p>
+		<p>Interests include interaction design patterns, road cycling and perpetually starting new things.</p>
+	</div>
+
+	<svg class="hello-separator" width="720" height="8" viewBox="0 0 720 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<line x1="324" y1="4.5" y2="4.5" stroke="#D8D8D8"/>
+	<line x1="720" y1="4.5" x2="396" y2="4.5" stroke="#D8D8D8"/>
+	<path d="M340.5 4C340.5 2.067 342.067 0.5 344 0.5C345.933 0.5 347.5 2.067 347.5 4C347.5 5.933 345.933 7.5 344 7.5C342.067 7.5 340.5 5.933 340.5 4Z" stroke="#D8D8D8"/>
+	<path d="M356.5 4C356.5 2.067 358.067 0.5 360 0.5C361.933 0.5 363.5 2.067 363.5 4C363.5 5.933 361.933 7.5 360 7.5C358.067 7.5 356.5 5.933 356.5 4Z" stroke="#D8D8D8"/>
+	<path d="M372.5 4C372.5 2.067 374.067 0.5 376 0.5C377.933 0.5 379.5 2.067 379.5 4C379.5 5.933 377.933 7.5 376 7.5C374.067 7.5 372.5 5.933 372.5 4Z" stroke="#D8D8D8"/>
+	</svg>
+
+	<a id="helloAction" class="button-text">Read a bit more</a>
+
+</section>
+
+<section id="work">
+
+	<div class="visual coffee"></div>
+	<h1>Work</h1>
+	<p>stories of product design & web apps I’ve built</p>
+	
+	<svg class="ribbon-left" width="291" height="12" viewBox="0 0 291 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<line x1="291" y1="5.5" x2="199" y2="5.5" stroke="#D8D8D8"/>
+	<line x1="171" y1="5.5" x2="-4.37114e-08" y2="5.49999" stroke="#D8D8D8"/>
+	<rect x="185" y="0.707107" width="7" height="7" rx="1.5" transform="rotate(45 185 0.707107)" stroke="#75E2E2"/>
+	</svg>
+
+	<h3>Case studies</h3>
+
+	<svg class="ribbon-right" width="288" height="12" viewBox="0 0 288 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<line y1="-0.5" x2="91.0515" y2="-0.5" transform="matrix(1 0 0 -1 0 5)" stroke="#D8D8D8"/>
+	<line y1="-0.5" x2="169.237" y2="-0.5" transform="matrix(1 -8.83334e-08 -8.65215e-08 -1 118.764 5)" stroke="#D8D8D8"/>
+	<rect y="0.710761" width="6.95887" height="6.95887" rx="1.5" transform="matrix(-0.703434 0.710761 0.703434 0.710761 104.408 0.20558)" stroke="#75E2E2"/>
+	</svg>
+
+	<ul class="work-list case-studies">
+			<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>Product design reviews in Paysafe</h4>
+			<h5>Async, modrated and free for alls</h5>
+			<span class="button-text">View</span>
+		</li>
+			<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>How we redesigned transaction history for Skrill </h4>
+			<h5>Currencies, totals and conversion</h5>
+			<span class="button-text">View</span>
+		</li>
+	</ul>
+
+	<svg class="ribbon-left" width="273" height="8" viewBox="0 0 273 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M272 3.50002L178 3.49995" stroke="#D8D8D8"/>
+	<line y1="-0.5" x2="153.997" y2="-0.5" transform="matrix(-1 0 0 1 153.998 4.00012)" stroke="#D8D8D8"/>
+	<path d="M162.502 4C162.502 5.933 164.069 7.5 166.002 7.5C167.935 7.5 169.502 5.933 169.502 4C169.502 2.067 167.935 0.5 166.002 0.5C164.069 0.499999 162.502 2.06699 162.502 4Z" stroke="#DEA4F2"/>
+	</svg>
+
+	<h3>Personal projects</h3>
+	
+	<svg class="ribbon-right" width="273" height="8" viewBox="0 0 273 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<path d="M1 3.50002L95.0001 3.49998" stroke="#D8D8D8"/>
+	<line x1="119.002" y1="3.50012" x2="273" y2="3.50018" stroke="#D8D8D8"/>
+	<path d="M110.5 4C110.5 5.93301 108.933 7.5 107 7.5C105.067 7.5 103.5 5.933 103.5 4C103.5 2.067 105.067 0.500001 107 0.500001C108.933 0.500002 110.5 2.067 110.5 4Z" stroke="#DEA4F2"/>
+	</svg>
+
+	<ul class="work-list personal-projects">
+		<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>Typings web app</h4>
+			<h5>Break-in that new keyboard, in cyrillic!</h5>
+			<span class="button-text">View</span>
+		</li>
+			<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>Lockedin Live progressive web app</h4>
+			<h5>Streaming online radio </h5>
+			<span class="button-text">View</span>
+		</li>
+	 		<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>Text counts Figma plug-in</h4>
+			<h5>Count characters and words with ease</h5>
+			<span class="button-text">View</span>
+		</li>
+			<li>
+			<a href="#"></a>
+			<div class="thumbnail"></div>
+			<h4>Town Portal </h4>
+			<h5>An adventure app for discovering Plovdiv</h5>
+			<span class="button-text">View</span>
+		</li>
+	</ul>
+
+</section>
+
+
+<section id="contact">
+
+	<div class="visual speech-bubble"></div>
+	<h1>Get in touch</h1>
+	<p>Should you want to, you can contact me via <a href="#" class="inline-link">email</a> or directly message me on <a href="#" class="inline-link">twitter</a>.</p>
+
+	<svg class="ribbon-left" width="252" height="8" viewBox="0 0 252 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<line x1="252" y1="4.5" x2="153" y2="4.5" stroke="#BEBEBE"/>
+	<line x1="129" y1="4.5" y2="4.5" stroke="#BEBEBE"/>
+	<path d="M137.809 7.5L141 1.11803L144.191 7.5H141H137.809Z" stroke="#BEBEBE"/>
+	</svg>
+
+
+	<h3>Elsewhere on the web</h3>
+
+	<svg class="ribbon-right" width="252" height="8" viewBox="0 0 252 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<line y1="-0.5" x2="99" y2="-0.5" transform="matrix(1 0 0 -1 0 4)" stroke="#BEBEBE"/>
+	<line y1="-0.5" x2="129" y2="-0.5" transform="matrix(1 0 0 -1 123 4)" stroke="#BEBEBE"/>
+	<path d="M111 1.11803L107.809 7.5H111H114.191L111 1.11803Z" stroke="#BEBEBE"/>
+	</svg>
+
+	<ul class="socials">
+		<li><a href=""><img src="" alt=""><span></span></img></a></li>
+		<li><a href=""><img src="" alt=""><span></span></img></a></li>
+		<li><a href=""><img src="" alt=""><span></span></img></a></li>
+		<li><a href=""><img src="" alt=""><span></span></img></a></li>
+	</ul>
+
+</section>
+
+<footer>
+	<div class="copy">&copy; <span class="year">2020</span> Todor Panev</div>
+	<div class="weekday-greeting"></div>
+</footer>
+
+
+<script type="text/javascript">
+
+	// * NAV LOGIC *
+
+	// Binds the nav link elements
+	let helloLink = document.querySelector("#hello-link")
+	let workLink = document.querySelector("#work-link")
+	let contactLink = document.querySelector("#contact-link")
+
+	// Binds the section elements
+	let helloSection = document.querySelector("#hello")
+	let workSection = document.querySelector("#work")
+	let contactSection = document.querySelector("#contact")
+
+	// Defines the adjusted section start positions
+	let helloPosStart = 0
+	let workPosStart = workSection.offsetTop - 180;
+	let contactPosStart = contactSection.offsetTop - 220;
+
+	// Defines the section scroll areas
+	let helloArea = {
+		start: helloPosStart,
+		end: workPosStart
+	}
+
+	let workArea = {
+		start: workPosStart,
+		end: contactPosStart
+	}
+
+	let contactArea = {
+		start: contactPosStart,
+		end: 10000
+	}
+
+	// Check where the scroll is and manage active class
+	document.addEventListener("scroll", function(){
+		console.log(window.pageYOffset)
+
+		if (window.pageYOffset > helloArea.start && window.pageYOffset < helloArea.end) {
+
+			console.log("in hello")
+			if (!helloLink.classList.contains("nav-link-active")) {
+				helloLink.classList.add("nav-link-active")
+				workLink.classList.remove("nav-link-active")
+				contactLink.classList.remove("nav-link-active")
+			}
+		}
+
+		if (window.pageYOffset >= workArea.start && window.pageYOffset < workArea.end) {
+			console.log("in work")
+			if (!workLink.classList.contains("nav-link-active")) {
+				helloLink.classList.remove("nav-link-active")
+				workLink.classList.add("nav-link-active")
+				contactLink.classList.remove("nav-link-active")
+			}
+
+		}
+
+		if (window.pageYOffset >= contactArea.start && window.pageYOffset < contactArea.end) {
+			if (!contactLink.classList.contains("nav-link-active")) {
+				helloLink.classList.remove("nav-link-active")
+				workLink.classList.remove("nav-link-active")
+				contactLink.classList.add("nav-link-active")
+			}
+			console.log("in contact")
+
+		}
+	})
+
+	// Manage nav clicks
+	helloLink.addEventListener("click", function() {
+		window.scrollTo({top: helloPosStart, behavior: 'smooth'})
+	})
+	workLink.addEventListener("click", function() {
+		window.scrollTo({top: workSection.offsetTop - 180, behavior: 'smooth'})
+	})
+
+	contactLink.addEventListener("click", function() {
+		window.scrollTo({top: contactSection.offsetTop - 220, behavior: 'smooth'})
+	})
+
+
+	// * SECTION LOGIC *
+
+	// Manage read more click
+
+	let helloAction = document.querySelector("#helloAction")
+
+	helloAction.addEventListener("click", function(){
+		helloSection.classList.toggle("hello-section-active")
+		if (!helloSection.classList.contains("hello-section-active")) {
+			helloAction.innerHTML = "Read a bit more"
+		}
+
+		else {
+			helloAction.innerHTML = "Read a bit less"
+		}
+
+	})
+
+	// * FOOTER *
+
+	let date = new Date()
+	
+	let currentYear = date.getFullYear()
+	document.querySelector('.year').innerHTML = currentYear
+
+
+	// Day greeting
+	if (date.getDay() === 0) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Its Sunday today, why not take a nap after you\'re done browsing?'
+	}
+
+	if (date.getDay() === 1) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Monday'
+	}
+
+	if (date.getDay() === 2) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Tuesday'
+	}
+
+	if (date.getDay() === 3) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'It seems that today is Wednesday. Probably pretty unremarkable.'
+	}
+
+	if (date.getDay() === 4) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Thursday'
+	}
+
+	if (date.getDay() === 5) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Friday'
+	}
+
+	if (date.getDay() === 5) {
+		document.querySelector('.weekday-greeting')
+		.innerHTML = 'Saturday'
+	}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
