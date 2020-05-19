@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Panev.net</title>
+	<meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 	
@@ -106,6 +107,12 @@
 		font-size: var(--v-base-plus);
 		margin: 0;
 		line-height: 1.6;
+	}
+
+	svg:active * {
+		fill: #fff;
+		/*stroke: var(--c-high);*/
+		stroke: var(--c-medi);
 	}
 
 	/* NAVIGATION */
@@ -245,6 +252,62 @@
 		animation: oval-small 3s infinite linear;
 	}
 
+	#bubble-oval1 {
+		animation: bubble-up 2s infinite ease-out;
+		animation-delay: 0s;
+	}
+
+	#bubble-oval2 {
+		animation: bubble-up 2s infinite ease-out;
+		animation-delay: 0.35s;
+	}
+
+	#bubble-oval3 {
+		animation: bubble-up 2s infinite ease-out;
+		animation-delay: 0.75s;
+	}
+
+	#bubble-head {
+		animation: bubble-head 5s infinite linear;
+		transform-origin: 67px 75px;
+	}
+
+	@keyframes bubble-head {
+		0% {
+			transform: translate(0px, 0px) rotate(0deg);
+		}
+
+		33% {
+			transform: translate(2px, -2px) rotate(6deg);
+		}
+
+		66% {
+			transform: translate(2px, -2px) rotate(-6deg);
+		}
+
+		100% {
+			transform: translate(0px, 0px) rotate(0deg);
+		}
+	}
+
+	@keyframes bubble-up {
+		0% {
+			transform: translateY(0px);
+		}
+
+		25% {
+			transform: translateY(-8px);
+		}
+
+		50% {
+			transform: translateY(0px);
+		}
+
+		100% {
+			transform: translateY(0px);
+		}
+	}
+
 	@keyframes oval-small {
 		0% {
 			opacity: 0;
@@ -301,7 +364,7 @@
 		}
 
 		50% {
-			stop-color: #c5c5c5;
+			stop-color: #BCBCBC;
 		}
 
 		100% {
@@ -473,11 +536,6 @@
 		}
 	}
 
-	svg:active * {
-		fill: #EAFAFA;
-		stroke: var(--c-high);
-	}
-
 	section h1 {
 		grid-column: cozy;
 		justify-self: center;
@@ -514,7 +572,7 @@
 		height: 360px;
 	}
 
-	.hello-section-active svg path {
+	.hello-section-active .hello-separator path {
 		stroke: var(--c-high);
 	}
 
@@ -806,7 +864,7 @@
 			</g>
 			<g id="cup">
 				<path id="holder" fill-rule="evenodd" clip-rule="evenodd" d="M55 55C55 60.5228 59.4772 65 65 65C70.5228 65 75 60.5228 75 55C75 49.4772 70.5228 45 65 45C59.4772 45 55 49.4772 55 55Z" fill="url(#paint2_linear)"/>
-				<path id="cupcup" fill-rule="evenodd" clip-rule="evenodd" d="M0 40.6349C0 58.869 14.9764 73.6508 33.4508 73.6508C51.9252 73.6508 66.9016 58.869 66.9016 40.6349L0 40.6349Z" fill="url(#paint3_linear)"/>
+				<path id="cupcup" fill-rule="evenodd" clip-rule="evenodd" d="M0 40.6349C0 58.869 14.9764 73.6508 33.4508 73.6508C51.9252 73.6508 66.9016 58.869 66.9016 40.6349L0 40.6349Z" fill="url(#paint3_whatevs)"/>
 				<g id="fumes">
 					<rect id="f1" x="23" y="12" width="4" height="24" rx="2" fill="#63DFDF"/>
 					<rect id="f2" x="31" width="4" height="36" rx="2" fill="#63DFDF"/>
@@ -829,8 +887,8 @@
 					<stop stop-color="#B0B0B0"/>
 					<stop offset="1" stop-color="#8C8C8C"/>
 				</linearGradient>
-				<linearGradient id="paint3_linear" x1="33.4508" y1="73.6508" x2="33" y2="40.9999" gradientUnits="userSpaceOnUse">
-					<stop id="cup-stop" offset="0.0001" stop-color="#DCDCDC"/>
+				<linearGradient id="paint3_whatevs" x1="33" y1="73" x2="33" y2="40" gradientUnits="userSpaceOnUse">
+					<stop id="cup-stop" offset="0" stop-color="#DCDCDC"/>
 					<stop offset="1" stop-color="#F0EFEF"/>
 				</linearGradient>
 			</defs>
@@ -922,7 +980,37 @@
 
 <section id="contact">
 
-	<div class="visual speech-bubble"></div>
+	<div class="visual speech-bubble">
+		<svg width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle id="bubble-joint1" cx="62.9999" cy="85.0001" r="8" fill="url(#b-paint0_linear)"/>
+			<rect id="bubble-joint2" x="56.9999" y="56.0001" width="36" height="29" rx="14.5" fill="url(#b-paint1_linear)"/>
+			<g id="bubble-head">
+				<rect id="bubble-joint3" x="11" y="17.0001" width="82" height="56" rx="28" fill="url(#b-paint2_radial)"/>
+				<g id="bubble-ovals">
+					<path id="bubble-oval3" fill-rule="evenodd" clip-rule="evenodd" d="M61.9999 49.0001C63.6567 49.0001 64.9999 47.657 64.9999 46.0001C64.9999 44.3433 63.6567 43.0001 61.9999 43.0001C60.343 43.0001 58.9999 44.3433 58.9999 46.0001C58.9999 47.657 60.343 49.0001 61.9999 49.0001Z" fill="#63DFDF"/>
+					<path id="bubble-oval2" fill-rule="evenodd" clip-rule="evenodd" d="M51.9999 49.0001C53.6567 49.0001 54.9999 47.657 54.9999 46.0001C54.9999 44.3433 53.6567 43.0001 51.9999 43.0001C50.343 43.0001 48.9999 44.3433 48.9999 46.0001C48.9999 47.657 50.343 49.0001 51.9999 49.0001Z" fill="#63DFDF"/>
+					<path id="bubble-oval1" fill-rule="evenodd" clip-rule="evenodd" d="M41.9999 49.0001C43.6567 49.0001 44.9999 47.657 44.9999 46.0001C44.9999 44.3433 43.6567 43.0001 41.9999 43.0001C40.343 43.0001 38.9999 44.3433 38.9999 46.0001C38.9999 47.657 40.343 49.0001 41.9999 49.0001Z" fill="#63DFDF"/>
+				</g>
+			</g>
+			<circle id="bubble-f3" cx="13" cy="70" r="2" fill="#C4C4C4"/>
+			<rect id="bubble-f2" x="92.5056" y="5.26282" width="8.08495" height="8.08495" transform="rotate(45 92.5056 5.26282)" fill="#EFEFEF"/>
+			<rect id="bubble-f1" y="5.36194" width="16" height="11" rx="5.5" transform="rotate(-19.58 0 5.36194)" fill="#F4F4F4"/>
+			<defs>
+				<linearGradient id="b-paint0_linear" x1="57.6665" y1="90.3335" x2="68.9999" y2="83.0001" gradientUnits="userSpaceOnUse">
+					<stop stop-color="#B0B0B0"/>
+					<stop offset="1" stop-color="#8C8C8C"/>
+				</linearGradient>
+				<linearGradient id="b-paint1_linear" x1="88.7999" y1="78.9585" x2="66.9294" y2="65.5022" gradientUnits="userSpaceOnUse">
+					<stop stop-color="#E7E7E7"/>
+					<stop offset="1" stop-color="#CDCDCD"/>
+				</linearGradient>
+				<radialGradient id="b-paint2_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(52.2763 44.6905) rotate(89.4284) scale(27.6918 40.5524)">
+					<stop stop-color="white"/>
+					<stop offset="1" stop-color="#ECECEC"/>
+				</radialGradient>
+			</defs>
+		</svg>
+	</div>
 	<h1>Get in touch</h1>
 	<p>Should you want to, you can contact me via <a href="#" class="inline-link">email</a> or directly message me on <a href="#" class="inline-link">twitter</a>.</p>
 
