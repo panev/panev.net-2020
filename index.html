@@ -11,7 +11,7 @@
 	:root {
 		 /*colours*/
 		--c-high: #52DBDB;
-		--c-diff: #DEA4F2;
+		--c-diff: #5299DB;
 		--c-base: #333333;
 		--c-medi: #999999;
 		--c-lite: #E7E7E7;
@@ -134,20 +134,22 @@
 		padding: 0 var(--v-headspace);
 		position: relative;
 		display: inline-block;
+		font-weight: 700;
 	}
 
 	nav a::after {
 		content: '';
-		background: var(--c-lite);
-		width: 24px;
-		height: 12px;
+		background: var(--c-high);
+		width: var(--v-base);
+		height: var(--v-base);
 		display: block;
 		position: absolute;
-		border-top-left-radius: 24px;
-		border-top-right-radius: 24px;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
+		border-radius: 50%;
+		bottom: 50%;
+		left: 16px;
+		transition: 0.3s;
+		transform: translateY(50%) scale(0);
+		opacity: 0;
 	}
 
 	nav a.nav-link-active::after {
@@ -156,11 +158,12 @@
 
 	nav a:hover {
 		cursor: pointer;
-		background: #f7f7f7;
+		color: var(--c-high);
 	}
 
-	.nav-link-active {
-		font-weight: 700;
+	.nav-link-active::after {
+		transform: translateY(50%) scale(1);
+		opacity: 1;
 	}
 
 	/* LAYOUT */
@@ -682,7 +685,7 @@
 		grid-column: 2 / 2;
 		grid-row: 1 / 1;
 		align-self: start;
-		margin-top: 16px;
+		margin-top: var(--v-base);
 		transition: 0.3s;
 		position: relative;
 		z-index: 5;
@@ -700,15 +703,16 @@
 		grid-row: 2 / 3;
 		align-self: end;
 		transition: 0.3s;
-		margin-bottom: 16px;
+		margin-bottom: var(--v-base);
 	}
 
-	.work-list span {
+	.work-list .button-text {
 		grid-column: 3 / 3;
 		grid-row: 1 / 3;
 		align-self: center;
 		justify-self: center;
 		opacity: 0;
+		transform: translateY(var(--v-base));
 		transition: 0.3s;
 	}
 
@@ -736,10 +740,7 @@
 	}
 
 	.work-list li:hover .button-text {
-
-	}
-
-	.work-list li:hover span {
+		transform: translateY(0px);
 		opacity: 1;
 	}
 
@@ -1169,12 +1170,13 @@
 	helloLink.addEventListener("click", function() {
 		window.scrollTo({top: helloPosStart, behavior: 'smooth'})
 	})
+
 	workLink.addEventListener("click", function() {
-		window.scrollTo({top: workSection.offsetTop - 180, behavior: 'smooth'})
+		window.scrollTo({top: workSection.offsetTop - 120, behavior: 'smooth'})
 	})
 
 	contactLink.addEventListener("click", function() {
-		window.scrollTo({top: contactSection.offsetTop - 220, behavior: 'smooth'})
+		window.scrollTo({top: contactSection.offsetTop - 160, behavior: 'smooth'})
 	})
 
 
