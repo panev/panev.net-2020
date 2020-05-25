@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Panev.net</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 	
@@ -75,7 +76,7 @@
 		border-radius: 2px;
 		position: absolute;
 		left: 0;
-		bottom: -4px;
+		bottom: -6px;
 	}
 
 	.inline-link:hover {
@@ -83,7 +84,7 @@
 	}
 
 	.inline-link:hover::after {
-		bottom: -6px;
+		bottom: -4px;
 	}
 
 	h1, h3 {
@@ -730,13 +731,12 @@
 		transform: scale(1.1);
 	}
 
-	.work-list.personal-projects li:hover .thumbnail svg rect, 
-	.work-list.personal-projects li:hover .thumbnail svg circle {
+	.case-studies li:hover .svg-highlighter {
 		fill: var(--c-high);
 	}
 
-	.work-list.personal-projects li:hover {
-
+	.personal-projects li:hover .svg-highlighter {
+		fill: var(--c-diff);
 	}
 
 	.work-list li:hover .button-text {
@@ -751,9 +751,6 @@
 	.work-list li:hover h4 {
 		/*color: var(--c-high);*/
 	}
-
-
-
 
 	/* CONTACT SECTION */
 
@@ -787,6 +784,18 @@
 
 		100% {
 			opacity: 1;
+		}
+	}
+
+
+	/* RWD */
+
+	@media screen and (max-width: 740px) {
+		:root {
+			/* sizes */
+			--l-base: 90%;
+			--l-cozy: 90%;
+			--l-part: 0px;
 		}
 	}
 	
@@ -1003,14 +1012,35 @@
 		</li>
 		<li>
 			<a href="#" target="_blank"></a>
-			<div class="thumbnail"></div>
+			<div class="thumbnail">
+
+			</div>
 			<h4>Lockedin Live progressive web app</h4>
 			<h5>Streaming online radio </h5>
 			<span class="button-text">View</span>
 		</li>
  		<li>
 			<a href="#" target="_blank"></a>
-			<div class="thumbnail"></div>
+			<div class="thumbnail">
+				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g filter="url(#filter0_d)">
+				<circle cx="24" cy="24" r="16" fill="white"/>
+				</g>
+				<path class="svg-highlighter" d="M29.8178 29.6906C29.7181 29.4962 29.6459 29.2546 29.601 28.9656C29.0779 29.5486 28.3977 29.84 27.5607 29.84C26.7684 29.84 26.1107 29.6108 25.5875 29.1524C25.0693 28.694 24.8102 28.116 24.8102 27.4185C24.8102 26.5615 25.1266 25.9037 25.7594 25.4453C26.3972 24.9869 27.3165 24.7553 28.5173 24.7503H29.5114V24.2869C29.5114 23.9132 29.4142 23.6142 29.2199 23.39C29.0305 23.1658 28.7291 23.0537 28.3155 23.0537C27.9518 23.0537 27.6653 23.1409 27.456 23.3153C27.2517 23.4897 27.1496 23.7288 27.1496 24.0328H24.9896C24.9896 23.5644 25.1341 23.1309 25.4231 22.7323C25.7121 22.3337 26.1207 22.0223 26.6488 21.7981C27.177 21.5689 27.7699 21.4543 28.4276 21.4543C29.4242 21.4543 30.2139 21.7059 30.7969 22.2091C31.3848 22.7074 31.6788 23.4099 31.6788 24.3168V27.8221C31.6838 28.5894 31.7909 29.1699 32.0002 29.5635V29.6906H29.8178ZM28.0315 28.1883C28.3504 28.1883 28.6444 28.1185 28.9134 27.979C29.1825 27.8345 29.3818 27.6427 29.5114 27.4035V26.0134H28.7042C27.6229 26.0134 27.0474 26.3871 26.9777 27.1345L26.9702 27.2615C26.9702 27.5306 27.0649 27.7523 27.2542 27.9267C27.4436 28.1011 27.7027 28.1883 28.0315 28.1883Z" fill="#C4C4C4"/>
+				<path class="svg-highlighter" d="M19.6904 26.6262H18.2479L17.7098 29.6906H16.3421L16.8802 26.6262H15.1836V25.3407H17.1044L17.4781 23.2181H15.7441V21.9176H17.7098L18.2554 18.8085H19.6157L19.0701 21.9176H20.52L21.0656 18.8085H22.4333L21.8877 21.9176H23.5245V23.2181H21.656L21.2823 25.3407H22.9565V26.6262H21.0581L20.52 29.6906H19.1523L19.6904 26.6262ZM18.4721 25.3407H19.9146L20.2883 23.2181H18.8384L18.4721 25.3407Z" fill="#C4C4C4"/>
+				<defs>
+				<filter id="filter0_d" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+				<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+				<feOffset/>
+				<feGaussianBlur stdDeviation="4"/>
+				<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"/>
+				<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+				<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+				</filter>
+				</defs>
+				</svg>
+			</div>
 			<h4>Text counts Figma plug-in</h4>
 			<h5>Count characters and words with ease</h5>
 			<span class="button-text">View</span>
