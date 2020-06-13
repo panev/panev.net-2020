@@ -286,6 +286,77 @@
 		transform-origin: 67px 75px;
 	}
 
+	#bubble-f1 {
+		animation: bubble-f1 3.1s infinite;
+		animation-delay: 0.5s;
+		transform-origin: top left;
+		transform: translate(5px, 5px) rotate(0deg);
+
+	}
+
+	@keyframes bubble-f1 {
+		0% {
+			transform: translate(5px, 5px) rotate(0deg);
+			opacity: 0;
+		}
+
+		50% {
+			opacity: 1;
+		}
+
+		100% {
+			transform: translate(-20px, -10px) rotate(106deg);
+			opacity: 0;
+		}
+	}
+
+	#bubble-f2 {
+		animation: bubble-f2 2.2s infinite;
+		animation-delay: 0.7s;
+		transform-origin: top right;
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+
+	@keyframes bubble-f2 {
+		0% {
+			transform: translate(0px, 0px) rotate(0deg);
+			opacity: 0;
+		}
+
+		50% {
+			opacity: 1;
+		}
+
+		100% {
+			transform: translate(30px, 40px) rotate(40deg);
+			opacity: 0;
+		}
+	}
+
+	#bubble-f3 {
+		animation: bubble-f3 3.6s infinite;
+		animation-delay: 0.2s;
+		transform-origin: top right;
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+
+	@keyframes bubble-f3 {
+		0% {
+			transform: translate(0px, 0px) rotate(0deg);
+			opacity: 0;
+		}
+
+		50% {
+			opacity: 1;
+		}
+
+		100% {
+			transform: translate(-20px, 10px) rotate(-10deg);
+			opacity: 0;
+		}
+	}
+
+
 	@keyframes bubble-head {
 		0% {
 			transform: translate(0px, 0px) rotate(0deg);
@@ -630,10 +701,10 @@
 
 	.work-list li {
 		background: #fcfcfc;
-		box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.16);
+		box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 		border-radius: var(--v-base);
 		height: var(--v-chunky);
-		border: 1px solid var(--c-lite);
+		border: 1px solid rgba(0,0,0,0);
 		position: relative;
 		margin-bottom: var(--v-base);
 		display: grid;
