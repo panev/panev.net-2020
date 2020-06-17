@@ -169,7 +169,7 @@
 
 	/* LAYOUT */
 
-	section {
+	section, footer {
 		width: var(--l-base);
 		display: grid;
 		grid-template-columns: var(--l-part) var(--l-cozy) var(--l-part);
@@ -860,7 +860,20 @@
 
 	footer {
 		text-align: center;
-		margin-top: 580px;
+		margin-top: var(--v-chunky);
+		margin-bottom: var(--v-fat);
+		font-size: var(--v-base);
+	}
+
+	.copy {
+		color: var(--c-base);
+		margin-bottom: var(--v-cozy);
+		grid-column: cozy;
+	}
+
+	.weekday-greeting {
+		grid-column: cozy;
+		color: var(--c-medi);
 	}
 
 	/* ANIMATIONS */
@@ -1341,37 +1354,37 @@
 	// Day greeting
 	if (date.getDay() === 0) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'Its Sunday today, why not take a nap after you\'re done browsing?'
+		.innerHTML = 'Its Sunday today. Why not take a nap after you\'re done browsing?'
 	}
 
 	if (date.getDay() === 1) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'Monday'
+		.innerHTML = 'It looks like it\'s Monday today. Happy new week!.'
 	}
 
 	if (date.getDay() === 2) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'Tuesday'
+		.innerHTML = 'Tuesday, Tuesday, Tuesday.'
 	}
 
 	if (date.getDay() === 3) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'It seems that today is Wednesday. Probably pretty unremarkable.'
+		.innerHTML = 'It seems today is Wednesday. Happy Wednesday!'
 	}
 
 	if (date.getDay() === 4) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'Thursday'
+		.innerHTML = 'It\'s Thursday! Did you know that the day was named after the Norse god of Thunder, Thor?'
 	}
 
 	if (date.getDay() === 5) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'It\'s Friday – hooray!'
+		.innerHTML = 'It\'s Friday today – hooray!'
 	}
 
-	if (date.getDay() === 6) {
+	if (date.getDay() === 3) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'Saturday'
+		.innerHTML = 'Hey, It\'s Saturday today. The Romans named Saturday Sāturni diēs (\"Saturn\'s Day\")'
 	}
 </script>
 
