@@ -714,6 +714,24 @@
   		overflow: hidden;
 	}
 
+	/* inactive list / comming soon */
+	.work-list li.inactive .thumbnail {
+		background: none;
+	}
+
+	.work-list li.inactive:hover,
+	.work-list li.inactive {
+		background: none;
+		transform: none;
+		box-shadow: none;
+		border: none;
+	}
+
+	.work-list li.inactive h4,
+	.work-list li.inactive h5 {
+		opacity: 0.75;
+	}
+
 	.work-list a {
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
@@ -894,10 +912,90 @@
 	@media screen and (max-width: 740px) {
 		:root {
 			/* sizes */
-			--l-base: 90%;
-			--l-cozy: 90%;
+			--l-base: 100vw;
+			--l-cozy: 100vw;
 			--l-part: 0px;
 		}
+
+		.hello-separator,
+		.ribbon-right,
+		.ribbon-left {
+			display: none;
+		}
+
+		nav {
+			width: 100vw;
+		}
+
+		nav a {
+			padding: 0 var(--v-base-plus);
+		}
+
+		nav a::after {
+			width: var(--v-cozy);
+			height: var(--v-cozy);
+			left: var(--v-cozy);
+		}
+
+		section {
+			margin-bottom: var(--v-chunky)
+		}
+
+		section p {
+			padding: 0 var(--v-spacious);
+			margin-bottom: var(--v-base);
+		}
+
+		section .button-text {
+			margin-top: var(--v-base-plus)
+		}
+
+		.hello-section-active .more-about {
+			height: 480px;
+		}
+
+		.work-list li {
+			height: var(--v-fat);
+			background: #fff;
+  			grid-template-rows: 40% 60%;
+  			border-radius: 0;
+		}
+
+		.work-list li.inactive {
+			height: var(--v-chunky);
+  			grid-template-rows: 50% 50%;
+		}
+
+		.work-list li h4 {
+			grid-column: 2 / 4;
+			align-self: center;
+		}
+
+		.work-list li h5 {
+			grid-column: 2 / 5;
+			align-self: start;
+		}
+
+		.work-list .button-text {
+			opacity: 1;
+			transform: none;
+			grid-row: 2 / 3;
+			grid-column: 2 / 3;
+			justify-self: start;
+		}
+
+		#hello {
+			margin-top: var(--v-headspace);
+		}
+
+		.more-about p {
+			margin-top: var(--v-base);
+		}
+
+		.weekday-greeting {
+			padding: 0 var(--v-headspace);
+		}
+
 	}
 	
 </style>
@@ -968,12 +1066,13 @@
 
 	</div>
 	<h1>Hi there</h1>
-	<p>I’m Todor – a product designer based in Sofia, Bulgaria. <br> I currently work at <a href="https://www.paysafe.com/" class="inline-link" target="_blank">Paysafe</a> on the <a href="https://www.skrill.com/" class="inline-link" target="_blank">Skrill</a> digital wallet.</p>
+	<p>I’m Todor – a product designer based in Sofia, Bulgaria.</p>
+	<p>I currently work at <a href="https://www.paysafe.com/" class="inline-link" target="_blank">Paysafe</a> on the <a href="https://www.skrill.com/" class="inline-link" target="_blank">Skrill</a> digital wallet.</p>
 
 	<div class="more-about">
 		<p>I’ve spent most of my career helping build digital products.</p>
 		<p>When I started out doing this, most designers were required to code – which was awesome and is still something I enjoy doing.</p>
-		<p>Today, after having gone through a few differnt design roles, I spend most of my time trying to fuse together people’s needs with business’ wants.</p>
+		<p>Today, after having gone through a few differnet design roles, I spend most of my time trying to fuse together people’s needs with business’ wants.</p>
 		<p>Interests include interaction design patterns, road cycling and perpetually starting new things.</p>
 	</div>
 
@@ -1049,7 +1148,7 @@
 	<rect y="0.710761" width="6.95887" height="6.95887" rx="1.5" transform="matrix(-0.703434 0.710761 0.703434 0.710761 104.408 0.20558)" stroke="#75E2E2"/>
 	</svg>
 	<ul class="work-list case-studies">
-		<li>
+		<li class="inactive">
 			<!-- <a href="#"></a> -->
 			<div class="thumbnail">
 				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1083,8 +1182,8 @@
 
 
 			</div>
-			<h4>First case study comming soon</h4>
-			<h5>Check back around mid-June</h5>
+			<h4>Soon!</h4>
+			<h5>Check back around late-August</h5>
 			<!-- <span class="button-text">View</span> -->
 		</li>
 	</ul>
@@ -1359,7 +1458,7 @@
 
 	if (date.getDay() === 1) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'It looks like it\'s Monday today. Happy new week!.'
+		.innerHTML = 'It looks like it\'s Monday today. Happy new week!'
 	}
 
 	if (date.getDay() === 2) {
@@ -1369,7 +1468,7 @@
 
 	if (date.getDay() === 3) {
 		document.querySelector('.weekday-greeting')
-		.innerHTML = 'It seems today is Wednesday. Happy Wednesday!'
+		.innerHTML = 'Today is Wednesday. According to the Thai solar calendar, the colour associated with Wednesday is green.'
 	}
 
 	if (date.getDay() === 4) {
@@ -1386,6 +1485,10 @@
 		document.querySelector('.weekday-greeting')
 		.innerHTML = 'Hey, It\'s Saturday today. The Romans named Saturday Sāturni diēs (\"Saturn\'s Day\")'
 	}
+
+	// Prod console.log for the curious :) 
+	console.log("Hey there! I'm flattered that I've spiked your interest enough for you to look under the hood. If want to know more about something here don't hesitate to drop me a line!")
+
 </script>
 
 </body>
