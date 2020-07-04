@@ -26,6 +26,7 @@
 
 		/* vertical nuggets */
 		--v-cozy: 8px;
+		--v-half: 12px;
 		--v-base: 16px;
 		--v-base-plus: 20px;
 		--v-spacious: 24px;
@@ -176,15 +177,28 @@
 		position: absolute;
 		top: calc(var(--v-chunky) / 2);
 		transform: translateY(-50%);
-		right: var(--v-base-plus);
+		right: var(--v-headspace);
 	}
 
 	.themes span {
-		width: var(--v-base-plus);
-		height: var(--v-base-plus);
+		width: var(--v-half);
+		height: var(--v-half);
 		display: inline-block;
+		margin-left: var(--v-base);
 		border-radius: 50%;
+		transition: 0.3s;
 	}
+
+	.themes span:hover {
+		transform: scale(1.75);
+		cursor: pointer;
+	}
+
+	.themes span.theme-active {
+		transform: scale(2)
+	}
+
+	
 
 	.peach {
 		background: #FEBC9D;
@@ -964,7 +978,8 @@
 
 		.hello-separator,
 		.ribbon-right,
-		.ribbon-left {
+		.ribbon-left,
+		.themes {
 			display: none;
 		}
 
@@ -1066,7 +1081,7 @@
 	<a id="work-link" tabindex="2">Work</a>
 	<a id="contact-link" tabindex="3">Contact</a>
 	<div class="themes">
-		<span class="peach" onclick="setPeach()"></span>
+		<span class="peach theme-active" onclick="setPeach()"></span>
 		<span class="purple" onclick="setPurple()"></span>
 		<span class="mono" onclick="setMono()"></span>
 		<span class="the-upside-down" onclick="setTheUpsideDown()"></span>
@@ -1487,53 +1502,72 @@
 		window.scrollTo({top: contactSection.offsetTop - 160, behavior: 'smooth'})
 	})
 
-	// theme logic 
+	// * THEMES LOGIC *  
 
 	function setPeach() {
-		cleanUp();
+		
+		// Set button to active
+		handleThemeClicks(themePeachButton)
+		
+		// Clear other styles
+		resetTheme();
+
+		// Set the vars
 		document.documentElement.style.setProperty('--c-high', '#FEBC9D');
 		document.documentElement.style.setProperty('--c-diff', '#F06565');
+
 	}
 
 	function setPurple() {
-		cleanUp();
+		
+		// Set button to active
+		handleThemeClicks(themePurpleButton)
+		
+		// Clear other styles
+		resetTheme();
+
+		// Set the vars
 		document.documentElement.style.setProperty('--c-high', '#FC9DE7');
 		document.documentElement.style.setProperty('--c-diff', '#CD2DAA');
 	}
 
 	function setMono() {
-		cleanUp();
+
+		// Set button to active
+		handleThemeClicks(themeMonoButton)
+		
+		// Clear other styles
+		resetTheme();
+
+		// Set the vars
 		document.documentElement.style.setProperty('--c-high', '#000');
 		document.documentElement.style.setProperty('--c-diff', 'var(--c-medi)');
-		for (svg of document.querySelectorAll('svg')) {
-			svg.style.fill = "black"
-		}
-
-		for (rect of document.querySelectorAll('rect')) {
-			rect.style.fill = "black"
-		}
-
-		for (oval of document.querySelectorAll('oval')) {
-			oval.style.fill = "black"
-		}
-
-		for (path of document.querySelectorAll('path')) {
-			path.style.fill = "black"
-		}
-
-		for (circle of document.querySelectorAll('circle')) {
-			circle.style.fill = "black"
-		} 
+	
+		// Set the SVG geometry
+		addSvgFills("svg", "black")
+		addSvgFills("rect", "black")
+		addSvgFills("oval", "black")
+		addSvgFills("path", "black")
+		addSvgFills("circle", "black")
 		
 	}
 
 	function setTheUpsideDown() {
-		cleanUp()
+
+		// Set button to active
+		handleThemeClicks(themeTheUpsideDownButton)
+
+		// Clear other styles
+		resetTheme()
+		
+		// Set the vars
 		document.documentElement.style.setProperty('--c-high', 'white');
 		document.documentElement.style.setProperty('--c-diff', 'var(--c-lite)');
 		document.documentElement.style.setProperty('--c-medi', 'white');
 		document.documentElement.style.setProperty('--c-base', 'white');
 
+		
+		// Set the common element styles manualy
 		document.querySelector('body').style.background = "black";
 
 		for (worklist of document.querySelectorAll('.work-list li')) {
@@ -1542,71 +1576,68 @@
 
 		document.querySelector('nav').style.background = "#333"
 
-		for (svg of document.querySelectorAll('svg')) {
-			svg.style.fill = "white"
-		}
-
-		for (rect of document.querySelectorAll('rect')) {
-			rect.style.fill = "white"
-		}
-
-		for (oval of document.querySelectorAll('oval')) {
-			oval.style.fill = "white"
-		}
-
-		for (path of document.querySelectorAll('path')) {
-			path.style.fill = "white"
-		}
-
-		for (circle of document.querySelectorAll('circle')) {
-			circle.style.fill = "white"
-		} 
+		// Set the SVG geometry
+		addSvgFills("svg", "white")
+		addSvgFills("rect", "white")
+		addSvgFills("oval", "white")
+		addSvgFills("path", "white")
+		addSvgFills("circle", "white")
 		
 	}
 
-	function cleanUp() {
+	function resetTheme() {
 
+		// Reset the vars to default
 		document.documentElement.style.setProperty('--c-medi', '#595959');
 		document.documentElement.style.setProperty('--c-base', '#2D2D2D');
 
-		document.querySelector('body').style.removeProperty("background");
-
+		// Reset the list item background
 		for (worklist of document.querySelectorAll('.work-list li')) {
 			worklist.style.removeProperty("background")
 		}
 
+		// Reset common element styles
+		document.querySelector('body').style.removeProperty("background");
 		document.querySelector('nav').style.removeProperty("background")
 
-		for (svg of document.querySelectorAll('svg')) {
-			svg.style.removeProperty("fill")
+		// reset the SVG geometry
+		removeSvgFills("svg");
+		removeSvgFills("rect");
+		removeSvgFills("oval");
+		removeSvgFills("path");
+		removeSvgFills("circle");
 
-		}
-
-		for (rect of document.querySelectorAll('rect')) {
-			rect.style.removeProperty("fill")
-
-		}
-
-		for (oval of document.querySelectorAll('oval')) {
-			oval.style.removeProperty("fill")
-
-		}
-
-		for (path of document.querySelectorAll('path')) {
-			path.style.removeProperty("fill")
-
-		}
-
-		for (circle of document.querySelectorAll('circle')) {
-			circle.style.removeProperty("fill")
-
-		} 
 	}
 
-// svg {
-// 	fill: #000;
-// 	stroke: #000;
-// }
+	// Utility functions for looping svgs
+	function removeSvgFills(e) {
+		for (e of document.querySelectorAll(e)) {
+			e.style.removeProperty("fill")
+		}
+	}
+
+	function addSvgFills(e, colour) {
+		for (e of document.querySelectorAll(e)) {
+			e.style.fill = colour
+		}
+	}
+
+	// UI state handling
+	function handleThemeClicks(e) {
+			for (themeButton of document.querySelectorAll(".themes span")) {
+				themeButton.classList.remove('theme-active')
+
+			}
+			e.classList.add('theme-active')
+		}
+
+	const themePeachButton = document.querySelector('.peach')
+
+	const themePurpleButton = document.querySelector('.purple')
+
+	const themeMonoButton = document.querySelector('.mono')
+
+	const themeTheUpsideDownButton = document.querySelector('.the-upside-down')
 
 	// * SECTION LOGIC *
 
