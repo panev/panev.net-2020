@@ -17,6 +17,7 @@
 		--c-base: #2D2D2D;
 		--c-medi: #595959;
 		--c-lite: #E7E7E7;
+		--c-white: #FFFFFF;
 
 		/* sizes */
 		--l-base: 720px;
@@ -121,7 +122,7 @@
 	nav {
 		height: var(--v-chunky);
 		width: 100%;
-		background: #fff;
+		background: var(--c-white);
 		position: fixed;
 		top: 0;
 		text-align: center;
@@ -166,6 +167,39 @@
 	.nav-link-active::after {
 		transform: translateY(50%) scale(1);
 		opacity: 1;
+	}
+
+	/* -themes */
+
+	.themes {
+		display: inline-block;
+		position: absolute;
+		top: calc(var(--v-chunky) / 2);
+		transform: translateY(-50%);
+		right: var(--v-base-plus);
+	}
+
+	.themes span {
+		width: var(--v-base-plus);
+		height: var(--v-base-plus);
+		display: inline-block;
+		border-radius: 50%;
+	}
+
+	.peach {
+		background: #FEBC9D;
+	}
+
+	.purple {
+		background: #FC9DE7;
+	}
+
+	.mono {
+		background: #DBDBDB;
+	}
+
+	.the-upside-down {
+		background: #000000;
 	}
 
 	/* LAYOUT */
@@ -1031,6 +1065,12 @@
 	<a id="hello-link" class="nav-link-active" tabindex="1">Hello</a>
 	<a id="work-link" tabindex="2">Work</a>
 	<a id="contact-link" tabindex="3">Contact</a>
+	<div class="themes">
+		<span class="peach" onclick="setPeach()"></span>
+		<span class="purple" onclick="setPurple()"></span>
+		<span class="mono" onclick="setMono()"></span>
+		<span class="the-upside-down" onclick="setTheUpsideDown()"></span>
+	</div>
 </nav>
 
 <section id="hello" role="introduction">
@@ -1447,6 +1487,126 @@
 		window.scrollTo({top: contactSection.offsetTop - 160, behavior: 'smooth'})
 	})
 
+	// theme logic 
+
+	function setPeach() {
+		cleanUp();
+		document.documentElement.style.setProperty('--c-high', '#FEBC9D');
+		document.documentElement.style.setProperty('--c-diff', '#F06565');
+	}
+
+	function setPurple() {
+		cleanUp();
+		document.documentElement.style.setProperty('--c-high', '#FC9DE7');
+		document.documentElement.style.setProperty('--c-diff', '#CD2DAA');
+	}
+
+	function setMono() {
+		cleanUp();
+		document.documentElement.style.setProperty('--c-high', '#000');
+		document.documentElement.style.setProperty('--c-diff', 'var(--c-medi)');
+		for (svg of document.querySelectorAll('svg')) {
+			svg.style.fill = "black"
+		}
+
+		for (rect of document.querySelectorAll('rect')) {
+			rect.style.fill = "black"
+		}
+
+		for (oval of document.querySelectorAll('oval')) {
+			oval.style.fill = "black"
+		}
+
+		for (path of document.querySelectorAll('path')) {
+			path.style.fill = "black"
+		}
+
+		for (circle of document.querySelectorAll('circle')) {
+			circle.style.fill = "black"
+		} 
+		
+	}
+
+	function setTheUpsideDown() {
+		cleanUp()
+		document.documentElement.style.setProperty('--c-high', 'white');
+		document.documentElement.style.setProperty('--c-diff', 'var(--c-lite)');
+		document.documentElement.style.setProperty('--c-medi', 'white');
+		document.documentElement.style.setProperty('--c-base', 'white');
+
+		document.querySelector('body').style.background = "black";
+
+		for (worklist of document.querySelectorAll('.work-list li')) {
+			worklist.style.background = "#333"
+		}
+
+		document.querySelector('nav').style.background = "#333"
+
+		for (svg of document.querySelectorAll('svg')) {
+			svg.style.fill = "white"
+		}
+
+		for (rect of document.querySelectorAll('rect')) {
+			rect.style.fill = "white"
+		}
+
+		for (oval of document.querySelectorAll('oval')) {
+			oval.style.fill = "white"
+		}
+
+		for (path of document.querySelectorAll('path')) {
+			path.style.fill = "white"
+		}
+
+		for (circle of document.querySelectorAll('circle')) {
+			circle.style.fill = "white"
+		} 
+		
+	}
+
+	function cleanUp() {
+
+		document.documentElement.style.setProperty('--c-medi', '#595959');
+		document.documentElement.style.setProperty('--c-base', '#2D2D2D');
+
+		document.querySelector('body').style.removeProperty("background");
+
+		for (worklist of document.querySelectorAll('.work-list li')) {
+			worklist.style.removeProperty("background")
+		}
+
+		document.querySelector('nav').style.removeProperty("background")
+
+		for (svg of document.querySelectorAll('svg')) {
+			svg.style.removeProperty("fill")
+
+		}
+
+		for (rect of document.querySelectorAll('rect')) {
+			rect.style.removeProperty("fill")
+
+		}
+
+		for (oval of document.querySelectorAll('oval')) {
+			oval.style.removeProperty("fill")
+
+		}
+
+		for (path of document.querySelectorAll('path')) {
+			path.style.removeProperty("fill")
+
+		}
+
+		for (circle of document.querySelectorAll('circle')) {
+			circle.style.removeProperty("fill")
+
+		} 
+	}
+
+// svg {
+// 	fill: #000;
+// 	stroke: #000;
+// }
 
 	// * SECTION LOGIC *
 
