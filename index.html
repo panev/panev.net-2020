@@ -82,8 +82,10 @@
 		bottom: -6px;
 	}
 
-	.inline-link:hover {
+	.inline-link:hover,
+	.inline-link:focus {
 		color: var(--c-high);
+		outline: none;
 	}
 
 	.inline-link:hover::after {
@@ -160,9 +162,11 @@
 		background: var(--c-high);
 	}
 
-	nav a:hover {
+	nav a:hover,
+	nav a:focus {
 		cursor: pointer;
 		color: var(--c-high);
+		outline: none;
 	}
 
 	.nav-link-active::after {
@@ -736,8 +740,10 @@
 		transition: 0.25s;
 	}
 
-	.button-text:hover {
+	.button-text:hover,
+	.button-text:focus {
 		transform: scale(1.1);
+		outline: none;
 	}
 
 	/* WORK SECTION */
@@ -931,9 +937,15 @@
 		transform: translateY(-50%);
 	}
 
-	.socials li:hover svg path {
+	.socials li:hover svg path,
+	.socials li a:focus svg path {
 		fill: var(--c-high);
 	}
+
+	.socials li a:focus {
+		outline: none;
+	}
+
 
 	footer {
 		text-align: center;
@@ -1077,9 +1089,9 @@
 <body>
 
 <nav role="navigation">
-	<a id="hello-link" class="nav-link-active" tabindex="1">Hello</a>
-	<a id="work-link" tabindex="2">Work</a>
-	<a id="contact-link" tabindex="3">Contact</a>
+	<a id="hello-link" class="nav-link-active" tabindex="0">Hello</a>
+	<a id="work-link" tabindex="0">Work</a>
+	<a id="contact-link" tabindex="0">Contact</a>
 	<div class="themes">
 		<span class="peach theme-active" onclick="setPeach()"></span>
 		<span class="purple" onclick="setPurple()"></span>
@@ -1163,7 +1175,7 @@
 	<path d="M372.5 4C372.5 2.067 374.067 0.5 376 0.5C377.933 0.5 379.5 2.067 379.5 4C379.5 5.933 377.933 7.5 376 7.5C374.067 7.5 372.5 5.933 372.5 4Z" stroke="#D8D8D8"/>
 	</svg>
 
-	<a id="helloAction" class="button-text">Read a bit more</a>
+	<a id="helloAction" tabindex="0" class="button-text">Read a bit more</a>
 
 </section>
 
