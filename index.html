@@ -772,7 +772,19 @@
   		grid-template-rows: 50% 50%;
   		transition: 0.3s;
   		overflow: hidden;
+  		transform-origin: center;
+ 
 	}
+
+	/* List rotatation idea: parked for now */
+
+	/*	.work-list li:nth-child(odd) {
+		transform: translateY(0px) scale(1) rotate(2deg);
+	}
+
+		.work-list li:nth-child(even) {
+		transform: translateY(0px) scale(1) rotate(-2deg);
+	}*/
 
 	/* inactive list / comming soon */
 	.work-list li.inactive .thumbnail {
@@ -807,13 +819,11 @@
 		opacity: 0.25;
 	}
 
-/*	.work-list a:focus span {
-		opacity: 0;
-	}*/
-
 	.work-list .thumbnail {
 		width: 48px;
 		height: 48px;
+		font-size: 32px;
+		line-height: 48px;
 		display: inline-block;
 		background: var(--c-lite);
 		border-radius: 50%;
@@ -833,7 +843,11 @@
 	}
 
 	.work-list.personal-projects .thumbnail {
-		background: var(--c-high);
+		background: var(--c-lite);
+	}
+
+	.svg-box-shadow {
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
 	}
 
 	.work-list.personal-projects .button-text {
@@ -893,14 +907,6 @@
 		transform: scale(1.1);
 	}
 
-	.case-studies li:hover .svg-highlighter {
-		fill: var(--c-high);
-	}
-
-	.personal-projects li:hover .svg-highlighter {
-		fill: var(--c-high);
-	}
-
 	.work-list li:hover .button-text {
 		transform: translateY(0px);
 		opacity: 1;
@@ -910,8 +916,8 @@
 		border: 2px dashed rgba(255, 255, 255, 1)
 	}
 
-	.work-list li:hover h4 {
-		/*color: var(--c-high);*/
+	.work-list.personal-projects li:hover .thumbnail {
+		background: var(--c-high);
 	}
 
 	/* CONTACT SECTION */
@@ -942,7 +948,7 @@
 
 	.socials li a span {
 		opacity: 0;
-		visibility: hidden;
+		position: absolute;
 	}
 
 	.socials li svg {
@@ -1113,7 +1119,7 @@
 	</div>
 </nav>
 
-<section id="hello" role="introduction">
+<section id="hello" role="region" aria-label="greeting section">
 
 	<div class="visual rocket">
 		
@@ -1192,7 +1198,7 @@
 
 </section>
 
-<section id="work" role="work showcase">
+<section id="work" role="region" aria-label="work showcase">
 
 	<div class="visual coffee">
 
@@ -1311,7 +1317,35 @@
 			<a href="#" target="_blank" rel="noopener">
 				<span>Typings web app</span>
 			</a>
-			<div class="thumbnail"></div>
+			<div class="thumbnail">
+				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g filter="url(#filter0_d)">
+					<rect x="8" y="12" width="32" height="24" rx="6" fill="white"/>
+					</g>
+					<rect x="12" y="16" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="12" y="22" width="6" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="12" y="28" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="24" y="16" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="26" y="22" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="18" y="16" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="20" y="22" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="18" y="28" width="12" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="30" y="16" width="6" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="32" y="22" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<rect x="32" y="28" width="4" height="4" rx="1" fill="var(--c-high)"/>
+					<defs>
+					<filter id="filter0_d" x="0" y="4" width="48" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+					<feOffset/>
+					<feGaussianBlur stdDeviation="4"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"/>
+					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+					</filter>
+					</defs>
+				</svg>
+			</div>
 			<h4>Typings web app</h4>
 			<h5>Break-in that new keyboard, in cyrillic!</h5>
 			<span class="button-text">View</span>
@@ -1321,23 +1355,11 @@
 				<span>Lockedin Live progressive web app</span>
 			</a>
 			<div class="thumbnail">
-
-			</div>
-			<h4>Lockedin Live progressive web app</h4>
-			<h5>Streaming online radio </h5>
-			<span class="button-text">View</span>
-		</li>
- 		<li>
-			<a href="#" target="_blank" rel="noopener">
-				<span>Text counts Figma plug-in</span>
-			</a>
-			<div class="thumbnail">
 				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g filter="url(#filter0_d)">
-				<circle cx="24" cy="24" r="16" fill="white"/>
+				<rect x="8" y="8" width="32" height="32" rx="16" fill="white"/>
 				</g>
-				<path class="svg-highlighter" d="M29.8178 29.6906C29.7181 29.4962 29.6459 29.2546 29.601 28.9656C29.0779 29.5486 28.3977 29.84 27.5607 29.84C26.7684 29.84 26.1107 29.6108 25.5875 29.1524C25.0693 28.694 24.8102 28.116 24.8102 27.4185C24.8102 26.5615 25.1266 25.9037 25.7594 25.4453C26.3972 24.9869 27.3165 24.7553 28.5173 24.7503H29.5114V24.2869C29.5114 23.9132 29.4142 23.6142 29.2199 23.39C29.0305 23.1658 28.7291 23.0537 28.3155 23.0537C27.9518 23.0537 27.6653 23.1409 27.456 23.3153C27.2517 23.4897 27.1496 23.7288 27.1496 24.0328H24.9896C24.9896 23.5644 25.1341 23.1309 25.4231 22.7323C25.7121 22.3337 26.1207 22.0223 26.6488 21.7981C27.177 21.5689 27.7699 21.4543 28.4276 21.4543C29.4242 21.4543 30.2139 21.7059 30.7969 22.2091C31.3848 22.7074 31.6788 23.4099 31.6788 24.3168V27.8221C31.6838 28.5894 31.7909 29.1699 32.0002 29.5635V29.6906H29.8178ZM28.0315 28.1883C28.3504 28.1883 28.6444 28.1185 28.9134 27.979C29.1825 27.8345 29.3818 27.6427 29.5114 27.4035V26.0134H28.7042C27.6229 26.0134 27.0474 26.3871 26.9777 27.1345L26.9702 27.2615C26.9702 27.5306 27.0649 27.7523 27.2542 27.9267C27.4436 28.1011 27.7027 28.1883 28.0315 28.1883Z" fill="#C4C4C4"/>
-				<path class="svg-highlighter" d="M19.6904 26.6262H18.2479L17.7098 29.6906H16.3421L16.8802 26.6262H15.1836V25.3407H17.1044L17.4781 23.2181H15.7441V21.9176H17.7098L18.2554 18.8085H19.6157L19.0701 21.9176H20.52L21.0656 18.8085H22.4333L21.8877 21.9176H23.5245V23.2181H21.656L21.2823 25.3407H22.9565V26.6262H21.0581L20.52 29.6906H19.1523L19.6904 26.6262ZM18.4721 25.3407H19.9146L20.2883 23.2181H18.8384L18.4721 25.3407Z" fill="#C4C4C4"/>
+				<path d="M18 28.5884V19.4813C18 17.9379 19.6741 16.9762 21.0074 17.7536L28.9761 22.4001C30.3131 23.1796 30.296 25.1171 28.9456 25.873L20.9769 30.3336C19.6437 31.0799 18 30.1163 18 28.5884Z" fill="var(--c-high)"/>
 				<defs>
 				<filter id="filter0_d" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 				<feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -1351,6 +1373,38 @@
 				</defs>
 				</svg>
 			</div>
+			<h4>Lockedin Live progressive web app</h4>
+			<h5>Streaming online radio </h5>
+			<span class="button-text">View</span>
+		</li>
+ 		<li>
+			<a href="#" target="_blank" rel="noopener">
+				<span>Text counts Figma plug-in</span>
+			</a>
+			<div class="thumbnail">
+				<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g filter="url(#filter0_d)">
+					<rect x="8" y="8" width="32" height="32" rx="12" fill="white"/>
+					</g>
+					<path d="M18.8208 15.7921C18.9225 14.7747 19.7786 14 20.801 14V14C21.9784 14 22.8983 15.0166 22.7812 16.1881L21.1792 32.2079C21.0775 33.2253 20.2214 34 19.199 34V34C18.0216 34 17.1017 32.9834 17.2188 31.8119L18.8208 15.7921Z" fill="var(--c-high)"/>
+					<path d="M26.8208 15.7921C26.9225 14.7747 27.7786 14 28.801 14V14C29.9784 14 30.8983 15.0166 30.7812 16.1881L29.1792 32.2079C29.0775 33.2253 28.2214 34 27.199 34V34C26.0216 34 25.1017 32.9834 25.2188 31.8119L26.8208 15.7921Z" fill="var(--c-high)"/>
+					<path d="M32.2079 18.8208C33.2253 18.9225 34 19.7786 34 20.801V20.801C34 21.9784 32.9834 22.8983 31.8119 22.7812L15.7921 21.1792C14.7747 21.0775 14 20.2214 14 19.199V19.199C14 18.0216 15.0166 17.1017 16.1881 17.2188L32.2079 18.8208Z" fill="var(--c-high)"/>
+					<path d="M32.2079 26.8208C33.2253 26.9225 34 27.7786 34 28.801V28.801C34 29.9784 32.9834 30.8983 31.8119 30.7812L15.7921 29.1792C14.7747 29.0775 14 28.2214 14 27.199V27.199C14 26.0216 15.0166 25.1017 16.1881 25.2188L32.2079 26.8208Z" fill="var(--c-high)"/>
+					<defs>
+					<filter id="filter0_d" x="0" y="0" width="48" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+					<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+					<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+					<feOffset/>
+					<feGaussianBlur stdDeviation="4"/>
+					<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"/>
+					<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+					<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+					</filter>
+					</defs>
+				</svg>
+
+
+			</div>
 			<h4>Text counts Figma plug-in</h4>
 			<h5>Count characters and words with ease</h5>
 			<span class="button-text">View</span>
@@ -1360,7 +1414,7 @@
 </section>
 
 
-<section id="contact" role="contact information">
+<section id="contact" role="region" aria-label="contact information">
 
 	<div class="visual speech-bubble">
 		<svg width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1414,41 +1468,41 @@
 	<ul class="socials">
 		<li>
 			<a href="https://www.linkedin.com/in/todorpanev/" target="_blank" rel="noopener">
+				<span>Linkedin</span>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M5.37214 24H0.396429V7.97643H5.37214V24ZM2.88161 5.79066C1.29054 5.79066 0 4.47278 0 2.88167C1.13882e-08 2.1174 0.303597 1.38444 0.844003 0.844022C1.38441 0.303604 2.11736 0 2.88161 0C3.64586 0 4.3788 0.303604 4.91921 0.844022C5.45962 1.38444 5.76321 2.1174 5.76321 2.88167C5.76321 4.47278 4.47214 5.79066 2.88161 5.79066ZM23.9946 24H19.0296V16.1998C19.0296 14.3409 18.9921 11.9569 16.4427 11.9569C13.8557 11.9569 13.4593 13.9766 13.4593 16.0659V24H8.48893V7.97643H13.2611V10.1622H13.3307C13.995 8.90323 15.6177 7.57463 18.0386 7.57463C23.0743 7.57463 24 10.8908 24 15.198V24H23.9946Z" fill="#333333"/>
 				</svg>
-				<span>Linkedin</span>
 			</a>
 		</li>
 		<li>
 			<a href="https://github.com/panev" target="_blank" rel="noopener">
+				<span>Github</span>
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M11.9993 0C5.373 0 0 5.5083 0 12.3047C0 17.7399 3.438 22.3516 8.20725 23.9788C8.80725 24.0918 9.02625 23.7119 9.02625 23.3859C9.02625 23.0937 9.01575 22.32 9.00975 21.2934C5.6715 22.0371 4.96725 19.6439 4.96725 19.6439C4.422 18.2228 3.63525 17.8445 3.63525 17.8445C2.5455 17.0809 3.71775 17.0963 3.71775 17.0963C4.9215 17.1832 5.55525 18.3643 5.55525 18.3643C6.62625 20.2445 8.364 19.7016 9.048 19.3863C9.15675 18.5912 9.46725 18.0491 9.81 17.7415C7.14525 17.4308 4.344 16.3757 4.344 11.661C4.344 10.3176 4.81125 9.21947 5.57925 8.35896C5.4555 8.04752 5.04375 6.79714 5.69625 5.10304C5.69625 5.10304 6.70425 4.77238 8.99625 6.36419C9.954 6.0912 10.98 5.95509 12.0007 5.9497C13.02 5.95509 14.0467 6.0912 15.0052 6.36419C17.2957 4.77238 18.3015 5.10304 18.3015 5.10304C18.9563 6.79714 18.5445 8.04752 18.4207 8.35896C19.1902 9.21947 19.6545 10.3176 19.6545 11.661C19.6545 16.3873 16.8487 17.4277 14.1757 17.7322C14.6062 18.1121 14.9902 18.8626 14.9902 20.0108C14.9902 21.6556 14.9753 22.9821 14.9753 23.3859C14.9753 23.715 15.1913 24.098 15.8003 23.9772C20.565 22.347 24 17.7384 24 12.3047C24 5.5083 18.627 0 11.9993 0" fill="#333333"/>
 				</svg>
-				<span>Github</span>
 			</a>
 		</li>
 		<li>
 			<a href="https://medium.com/@panev" target="_blank" rel="noopener">
+				<span>Medium</span>
 				<svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M2.96155 4.08025C2.99256 3.7728 2.87368 3.46535 2.64627 3.2569L0.315278 0.422095V0H7.56151L13.1642 12.3867L18.0897 0H25V0.422095L23.005 2.35018C22.8344 2.48046 22.7465 2.69932 22.7827 2.91298V17.087C22.7465 17.3007 22.8344 17.5195 23.005 17.6498L24.9535 19.5779V20H15.1489V19.5779L17.1697 17.6029C17.3661 17.4049 17.3661 17.3424 17.3661 17.0401V5.58624L11.748 19.9635H10.9882L4.45524 5.58624V15.2215C4.39839 15.6279 4.53277 16.0344 4.81704 16.3262L7.44263 19.5362V19.9583H0V19.5414L2.62559 16.3262C2.90469 16.0344 3.03391 15.6227 2.96155 15.2215V4.08025Z" fill="#333333"/>
 				</svg>
-				<span>Medium</span>
 			</a>
 		</li>
 		<li>
 			<a href="https://www.figma.com/@panev" target="_blank" rel="noopener">
+				<span>Figma</span>
 				<svg width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M12.0006 8.00156C13.0613 8.00156 14.0786 7.58005 14.8286 6.82976C15.5786 6.07947 16 5.06185 16 4.00078C16 2.93971 15.5786 1.92209 14.8286 1.1718C14.0786 0.42151 13.0613 0 12.0006 0L4.00176 0C2.94167 0 1.925 0.421263 1.1754 1.17112C0.425806 1.92097 0.00468699 2.93799 0.00468699 3.99844C0.00468699 5.05889 0.425806 6.07591 1.1754 6.82576C1.925 7.57561 2.94167 7.99688 4.00176 7.99688C2.94105 7.99688 1.92378 8.41838 1.17375 9.16868C0.42371 9.91897 0.00234407 10.9366 0.00234407 11.9977C0.00234407 13.0587 0.42371 14.0763 1.17375 14.8266C1.92378 15.5769 2.94105 15.9984 4.00176 15.9984C3.21075 15.998 2.43737 16.2322 1.77941 16.6714C1.12145 17.1106 0.60847 17.7352 0.305336 18.466C0.00220203 19.1969 -0.0774707 20.0013 0.076393 20.7774C0.230257 21.5536 0.610746 22.2667 1.16975 22.8265C1.72875 23.3864 2.44115 23.7678 3.21687 23.9227C3.99259 24.0775 4.79679 23.9987 5.52776 23.6964C6.25873 23.394 6.88366 22.8815 7.3235 22.2239C7.76335 21.5662 7.99837 20.7928 7.99883 20.0016V8.00156H12.0006ZM12.0006 8.00156C11.21 8.00156 10.4372 8.23607 9.77993 8.67542C9.12262 9.11477 8.6103 9.73925 8.30777 10.4699C8.00524 11.2005 7.92609 12.0044 8.08032 12.7801C8.23455 13.5557 8.61523 14.2681 9.17423 14.8273C9.73323 15.3865 10.4454 15.7673 11.2208 15.9216C11.9962 16.0759 12.7998 15.9967 13.5302 15.6941C14.2606 15.3914 14.8848 14.879 15.324 14.2214C15.7632 13.5639 15.9977 12.7908 15.9977 12C15.9975 10.9396 15.5764 9.92264 14.8268 9.17282C14.0772 8.42299 13.0606 8.00169 12.0006 8.00156Z" fill="#333333"/>
 				</svg>
-				<span>Figma</span>
 			</a>
 		</li>
 	</ul>
 
 </section>
 
-<footer role="content info">
+<footer role="region" aria-label="footer copyright and greeting">
 	<div class="copy">&copy; <span class="year"></span> Todor Panev</div>
 	<div class="weekday-greeting"></div>
 </footer>
@@ -1731,7 +1785,7 @@
 		.innerHTML = 'It\'s Friday today – hooray!'
 	}
 
-	if (date.getDay() === 3) {
+	if (date.getDay() === 6) {
 		document.querySelector('.weekday-greeting')
 		.innerHTML = 'Hey, It\'s Saturday today. The Romans named Saturday Sāturni diēs (\"Saturn\'s Day\")'
 	}
