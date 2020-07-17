@@ -12,17 +12,21 @@
 
 	:root {
 
-		 /* colours */
-		--c-high: #FEBC9D;
-		--c-diff: #F06565;
+		/* colour themes */
+		--c-peach: #FEBC9D;
+		--c-peach-alt: #F06565;
+		
+		--c-purple: #A68EFC;
+		--c-purple-alt: #626FE3;
+
+		 /* base colours */
+		--c-high: var(--c-purple);
+		--c-diff: var(--c-purple-alt);
 		--c-base: #2D2D2D;
 		--c-medi: #595959;
 		--c-lite: #E7E7E7;
 		--c-white: #FFFFFF;
-		
-		/* colour themes */
-		/*TODO*/
-
+	
 		/* sizes */
 		--l-base: 720px;
 		--l-cozy: 480px;
@@ -67,7 +71,7 @@
 		color: var(--c-base);
 		padding-top: var(--v-chunky);
 		display: grid;
-		font-family: 'PT Sans', sans-serif;
+		font-family: 'PT Sans', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	.inline-link {
@@ -98,7 +102,7 @@
 	}
 
 	h1, h3 {
-		font-family: 'Comfortaa', cursive;
+		font-family: 'Comfortaa', 'Helvetica', 'Arial', sans-serif;
 	}
 
 	h1 {
@@ -237,7 +241,7 @@
 	}
 
 	.peach-container .dot {
-		background: #FEBC9D;
+		background: var(--c-peach);
 	}
 
 	.peach-container .label {
@@ -245,7 +249,7 @@
 	}
 
 	.purple-container .dot {
-		background: #A68EFC;
+		background: var(--c-purple);
 	}
 
 	.purple-container .label {
@@ -282,7 +286,6 @@
 	#hello {
 		margin-top: var(--v-chunky);
 	}
-
 
 	#work > p {
 		justify-self: center;
@@ -759,7 +762,7 @@
 	}
 
 	.hello-section-active .hello-separator path {
-		stroke: var(--c-high);
+		stroke: var(--c-diff);
 	}
 
 	.hello-section-active .more-about p {
@@ -1513,7 +1516,7 @@
 	<svg class="ribbon-left" width="252" height="8" viewBox="0 0 252 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<line x1="252" y1="4.5" x2="153" y2="4.5" stroke="#BEBEBE"/>
 	<line x1="129" y1="4.5" y2="4.5" stroke="#BEBEBE"/>
-	<path d="M137.809 7.5L141 1.11803L144.191 7.5H141H137.809Z" stroke="#BEBEBE"/>
+	<path d="M137.809 7.5L141 1.11803L144.191 7.5H141H137.809Z" stroke="var(--c-high)"/>
 	</svg>
 
 
@@ -1522,7 +1525,7 @@
 	<svg class="ribbon-right" width="252" height="8" viewBox="0 0 252 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<line y1="-0.5" x2="99" y2="-0.5" transform="matrix(1 0 0 -1 0 4)" stroke="#BEBEBE"/>
 	<line y1="-0.5" x2="129" y2="-0.5" transform="matrix(1 0 0 -1 123 4)" stroke="#BEBEBE"/>
-	<path d="M111 1.11803L107.809 7.5H111H114.191L111 1.11803Z" stroke="#BEBEBE"/>
+	<path d="M111 1.11803L107.809 7.5H111H114.191L111 1.11803Z" stroke="var(--c-high)"/>
 	</svg>
 
 	<ul class="socials">
