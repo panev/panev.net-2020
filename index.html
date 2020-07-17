@@ -11,13 +11,17 @@
 	/* VARIABLES */
 
 	:root {
-		 /*colours*/
+
+		 /* colours */
 		--c-high: #FEBC9D;
 		--c-diff: #F06565;
 		--c-base: #2D2D2D;
 		--c-medi: #595959;
 		--c-lite: #E7E7E7;
 		--c-white: #FFFFFF;
+		
+		/* colour themes */
+		/*TODO*/
 
 		/* sizes */
 		--l-base: 720px;
@@ -30,6 +34,7 @@
 		--v-base: 16px;
 		--v-base-plus: 20px;
 		--v-spacious: 24px;
+		--v-spacious-plus: 32px;
 		--v-headspace: 40px;
 		--v-chunky: 80px;
 		--v-fat: 160px;
@@ -184,40 +189,83 @@
 		right: var(--v-headspace);
 	}
 
-	.themes span {
+	.themes > div {
+		display: inline-block;
+		padding: var(--v-half);
+		position: relative;
+	}
+
+	.themes > div:hover {
+		cursor: pointer;
+	}
+
+	.themes .dot {
 		width: var(--v-half);
 		height: var(--v-half);
 		display: inline-block;
-		margin-left: var(--v-base);
-		border-radius: 50%;
+		margin: 0 auto;
+		border-radius: 5px;
 		transition: 0.3s;
+		transform: rotate(45deg);
 	}
 
-	.themes span:hover {
+	.themes > div:hover .dot {
 		transform: scale(1.25);
 		cursor: pointer;
 	}
 
-	.themes span.theme-active {
+	.themes > div:hover .label {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+
+	.themes > div.theme-active .dot {
 		transform: scale(1.75)
 	}
 
-	
+	.themes .label {
+		position: absolute;
+		bottom: -42px;
+		display: block;
+		background: rgba(0,0,0,0.5);
+		color: #fff;
+		padding: 12px;
+		border-radius: 12px;
+		opacity: 0;
+		transition: 0.3s;
+		transform: translateY(12px);
+	}
 
-	.peach {
+	.peach-container .dot {
 		background: #FEBC9D;
 	}
 
-	.purple {
-		background: #FC9DE7;
+	.peach-container .label {
+		left: -16px;
 	}
 
-	.mono {
+	.purple-container .dot {
+		background: #A68EFC;
+	}
+
+	.purple-container .label {
+		left: -17px;
+	}
+
+	.mono-container .dot {
 		background: #DBDBDB;
 	}
 
-	.the-upside-down {
+	.mono-container .label {
+		left: -12px;
+	}
+
+	.dark-mono-container .dot {
 		background: #000000;
+	}
+
+	.dark-mono-container .label {
+		left: -62px;
 	}
 
 	/* LAYOUT */
@@ -1112,10 +1160,22 @@
 	<a id="work-link" tabindex="0">Work</a>
 	<a id="contact-link" tabindex="0">Contact</a>
 	<div class="themes">
-		<span class="peach theme-active" onclick="setPeach()"></span>
-		<span class="purple" onclick="setPurple()"></span>
-		<span class="mono" onclick="setMono()"></span>
-		<span class="the-upside-down" onclick="setTheUpsideDown()"></span>
+		<div class="purple-container theme-active" onclick="setPurple()">
+			<div class="dot"></div>
+			<div class="label">Purple</div>
+		</div>
+		<div class="peach-container" onclick="setPeach()">
+			<div class="dot"></div>
+			<div class="label">Peach</div>
+		</div>
+		<div class="mono-container" onclick="setMono()">
+			<div class="dot"></div>
+			<div class="label">Mono</div>
+		</div>
+		<div class="dark-mono-container" onclick="setDarkMono()">		
+			<div class="dot"></div>
+			<span class="label">Dark Mono</span>
+		</div>
 	</div>
 </nav>
 
@@ -1616,8 +1676,8 @@
 		resetTheme();
 
 		// Set the vars
-		document.documentElement.style.setProperty('--c-high', '#FC9DE7');
-		document.documentElement.style.setProperty('--c-diff', '#CD2DAA');
+		document.documentElement.style.setProperty('--c-high', '#A68EFC');
+		document.documentElement.style.setProperty('--c-diff', '#626FE3');
 	}
 
 	function setMono() {
@@ -1641,10 +1701,10 @@
 		
 	}
 
-	function setTheUpsideDown() {
+	function setDarkMono() {
 
 		// Set button to active
-		handleThemeClicks(themeTheUpsideDownButton)
+		handleThemeClicks(themeDarkMonoButton)
 
 		// Clear other styles
 		resetTheme()
@@ -1713,19 +1773,19 @@
 
 	// UI state handling
 	function handleThemeClicks(e) {
-			for (themeButton of document.querySelectorAll(".themes span")) {
+			for (themeButton of document.querySelectorAll(".themes > div")) {
 				themeButton.classList.remove('theme-active')
 			}
 			e.classList.add('theme-active')
 		}
 
-	const themePeachButton = document.querySelector('.peach')
+	const themePeachButton = document.querySelector('.peach-container')
 
-	const themePurpleButton = document.querySelector('.purple')
+	const themePurpleButton = document.querySelector('.purple-container')
 
-	const themeMonoButton = document.querySelector('.mono')
+	const themeMonoButton = document.querySelector('.mono-container')
 
-	const themeTheUpsideDownButton = document.querySelector('.the-upside-down')
+	const themeDarkMonoButton = document.querySelector('.dark-mono-container')
 
 	// * SECTION LOGIC *
 
