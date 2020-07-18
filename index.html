@@ -1612,11 +1612,9 @@
 
 	// Check where the scroll is and manage active class
 	document.addEventListener("scroll", function(){
-		console.log(window.pageYOffset)
 
 		if (window.pageYOffset > helloArea.start && window.pageYOffset < helloArea.end) {
 
-			console.log("in hello")
 			if (!helloLink.classList.contains("nav-link-active")) {
 				helloLink.classList.add("nav-link-active")
 				workLink.classList.remove("nav-link-active")
@@ -1625,7 +1623,6 @@
 		}
 
 		if (window.pageYOffset >= workArea.start && window.pageYOffset < workArea.end) {
-			console.log("in work")
 			if (!workLink.classList.contains("nav-link-active")) {
 				helloLink.classList.remove("nav-link-active")
 				workLink.classList.add("nav-link-active")
@@ -1640,7 +1637,6 @@
 				workLink.classList.remove("nav-link-active")
 				contactLink.classList.add("nav-link-active")
 			}
-			console.log("in contact")
 
 		}
 	})
